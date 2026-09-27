@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lo que fue</title>
+
+    <style>
+
+        /* =========================
+           ESTILO GENERAL
+        ========================== */
+
+        body {
+            margin: 0;
+            background-color: #e8e1d3;
+            color: #171513;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .contenedor {
+            max-width: 850px;
+            margin: auto;
+            padding: 70px 25px;
+            position: relative;
+        }
+
+
+        /* =========================
+           MARCO MEDIEVAL
+        ========================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            top: 18px;
+            left: 18px;
+            right: 18px;
+            bottom: 18px;
+
+            border: 1px solid #171513;
+
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        body::after {
+            content: "❦";
+
+            position: fixed;
+
+            top: 5px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background-color: #e8e1d3;
+
+            padding: 0 12px;
+
+            font-size: 22px;
+
+            z-index: 1001;
+        }
+
+        .contenedor::before {
+            content: "❧";
+
+            position: fixed;
+
+            top: 10px;
+            left: 10px;
+
+            font-size: 25px;
+
+            z-index: 1001;
+        }
+
+        .contenedor::after {
+            content: "❧";
+
+            position: fixed;
+
+            bottom: 10px;
+            right: 10px;
+
+            font-size: 25px;
+
+            transform: rotate(180deg);
+
+            z-index: 1001;
+        }
+
+
+        /* =========================
+           ENCABEZADO
+        ========================== */
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 62px;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            margin: 0 0 18px 0;
+            font-weight: normal;
+        }
+
+        .frase {
+            font-size: 19px;
+            font-style: italic;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+
+        /* =========================
+           ORNAMENTOS DEL ENCABEZADO
+        ========================== */
+
+        .ornamento {
+            text-align: center;
+            font-size: 18px;
+            margin: 18px 0;
+            letter-spacing: 12px;
+        }
+
+        .ornamento::before {
+            content: "✦  ❦  ✦";
+        }
+
+        .ornamento::after {
+            content: "";
+        }
+
+
+        /* =========================
+           DIBUJO
+        ========================== */
+
+        .dibujo {
+            display: block;
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto 60px auto;
+
+            border: 1px solid #171513;
+
+            padding: 14px;
+
+            box-sizing: border-box;
+        }
+
+
+        /* =========================
+           SECCIÓN DE CANCIÓN
+        ========================== */
+
+        .cancion {
+            text-align: center;
+
+            border-top: 1px solid #171513;
+            border-bottom: 1px solid #171513;
+
+            padding: 55px 20px;
+            margin: 50px 0 70px 0;
+
+            position: relative;
+        }
+
+        .cancion::before {
+            content: "❦";
+
+            position: absolute;
+            top: -15px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background-color: #e8e1d3;
+
+            padding: 0 15px;
+
+            font-size: 22px;
+        }
+
+        .cancion::after {
+            content: "❦";
+
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background-color: #e8e1d3;
+
+            padding: 0 15px;
+
+            font-size: 22px;
+        }
+
+        .cancion-titulo {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #3a3732;
+        }
+
+        .spotify {
+            display: block;
+            width: 350px;
+            max-width: 90%;
+            margin: 0 auto 35px auto;
+        }
+
+        .youtube {
+            display: inline-block;
+
+            color: #171513;
+            font-weight: bold;
+            text-decoration: none;
+
+            border: 1px solid #171513;
+
+            padding: 11px 28px;
+
+            letter-spacing: 2px;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .youtube:hover {
+            background-color: #171513;
+            color: #e8e1d3;
+        }
+
+
+        /* =========================
+           POEMA
+        ========================== */
+
+        .poema {
+            max-width: 700px;
+            margin: auto;
+
+            font-size: 18px;
+            line-height: 1.9;
+
+            text-align: left;
+        }
+
+        .poema p {
+            margin-bottom: 32px;
+        }
+
+
+        /* =========================
+           INICIAL CAPITULAR
+        ========================== */
+
+        .poema p:first-child::first-letter {
+            float: left;
+
+            font-size: 75px;
+            line-height: 55px;
+
+            padding-right: 10px;
+            padding-top: 5px;
+
+            font-family: Georgia, serif;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FRASE FINAL
+        ========================== */
+
+        .final {
+            text-align: center;
+
+            font-size: 27px;
+            font-style: italic;
+            font-weight: normal;
+
+            margin-top: 100px;
+            margin-bottom: 40px;
+
+            position: relative;
+            padding-top: 35px;
+        }
+
+        .final::before {
+            content: "❦";
+
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           ORNAMENTO FINAL
+        ========================== */
+
+        .fin {
+            text-align: center;
+
+            font-size: 18px;
+
+            margin-top: 45px;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           MÓVIL
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+                padding: 45px 20px;
+            }
+
+            h1 {
+                font-size: 42px;
+                letter-spacing: 3px;
+            }
+
+            .frase {
+                font-size: 17px;
+            }
+
+            .poema {
+                font-size: 17px;
+                line-height: 1.8;
+            }
+
+            .final {
+                font-size: 23px;
+                margin-top: 80px;
+            }
+
+            body::before {
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="contenedor">
+
+
+        <!-- ENCABEZADO -->
+
+        <header>
+
+            <div class="ornamento"></div>
+
+            <h1>Lo que fue</h1>
+
+            <p class="frase">
+                “Qué bonito fue mientras duró.”
+            </p>
+
+            <div class="ornamento"></div>
+
+        </header>
+
+
+
+        <!-- DIBUJO -->
+
+        <img 
+            src="dibujo.jpg" 
+            alt="Ilustración"
+            class="dibujo"
+        >
+
+
+
+        <!-- CANCIÓN -->
+
+        <section class="cancion">
+
+            <div class="cancion-titulo">
+                ❦ Una canción para recordar ❦
+            </div>
+
+            <img 
+                src="spotify.jpg" 
+                alt="Código de Spotify"
+                class="spotify"
+            >
+
+            <a 
+                href="https://youtu.be/scif2vfg1ug?si=N0T5iX0x5rWKht57"
+                target="_blank"
+                class="youtube"
+            >
+                Escuchar
+            </a>
+
+        </section>
+
+
+
+        <!-- POEMA -->
+
+        <section class="poema">
+
+            <p>
+                A veces pienso en aquellos días
+                y me da un poco de risa
+                todo lo que sentía,
+                todo lo que imaginaba
+                y todas esas cosas pequeñas
+                que en ese momento parecían enormes.
+            </p>
+
+            <p>
+                Hoy lo veo diferente.
+                No porque haya dejado de importar,
+                sino porque aprendí a verlo de otra manera.
+            </p>
+
+            <p>
+                Fue una etapa bonita.
+                Hubo canciones, conversaciones,
+                caminatas y momentos
+                que todavía recuerdo con cariño.
+            </p>
+
+            <p>
+                También hubo cosas que hice pensando en ti,
+                detalles que en ese momento
+                significaban mucho para mí.
+            </p>
+
+            <p>
+                Y creo que está bien.
+                En ese momento quería hacerlo
+                y lo hice porque me hacía feliz.
+            </p>
+
+            <p>
+                También hubo cosas que no salieron como esperaba.
+                Hubo momentos que dolieron
+                y otros que me costó entender.
+            </p>
+
+            <p>
+                Pero supongo que así es la vida.
+                A veces algo cambia
+                y uno tarda un poco en darse cuenta
+                de que también tiene que cambiar.
+            </p>
+
+            <p>
+                Ahora estoy en otras cosas.
+                Volví a hablar con mis amigos,
+                a salir, a reírme con ellos
+                y a recuperar algunas cosas
+                que había dejado atrás.
+            </p>
+
+            <p>
+                Y de vez en cuando apareces en algún recuerdo.
+                Una canción, algún lugar
+                o hasta un peluche en una tienda XD.
+            </p>
+
+            <p>
+                Y sí, todavía me pega un poquito.
+                Pero ya no como antes.
+            </p>
+
+            <p>
+                Ahora puedo sonreír
+                y pensar:
+            </p>
+
+            <p>
+                <strong>
+                    “Qué bonito fue mientras duró.”
+                </strong>
+            </p>
+
+            <p>
+                Y quizá eso es lo que más agradezco:
+                que aunque nuestra historia terminó,
+                mi vida siguió.
+            </p>
+
+            <p>
+                Todavía quedan canciones por escuchar,
+                lugares por conocer
+                y momentos por vivir.
+            </p>
+
+            <p>
+                Así que gracias
+                por haber sido parte de una etapa
+                que fue bonita mientras duró.
+            </p>
+
+            <p>
+                Me quedo con lo bueno,
+                con lo que aprendí
+                y con los recuerdos que valieron la pena.
+            </p>
+
+
+            <!-- CIERRE -->
+
+            <p class="final">
+                Y ahora toca seguir.
+            </p>
+
+            <div class="fin">
+                ❦
+            </div>
+
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>
